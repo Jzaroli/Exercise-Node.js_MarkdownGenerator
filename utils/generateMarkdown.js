@@ -1,32 +1,56 @@
-// TODO: Create a function that returns a license badge based on which license is passed in
-// If there is no license, return an empty string
-function renderLicenseBadge() {
- if (data.license === MIT) {
-    return '![MIT](./images/MIT.jpg)'
- } else if (data.license === Apache) {
+// Function that returns a license badge based on which license is passed. If there is no license, it returns an empty string.
+function renderLicenseBadge(data) {
+ if (data.license === 'MIT') {
+    return '![MIT](./images/mit.jpg)'
+ } else if (data.license === 'Apache') {
     return '![Apache](./images/apache.jpg)'
- } else if (data.license === GPL) {
-    return '![GPL](./images/GPL.jpg)'
- } else if (data.license === Mozilla) {
-    return '![Mozilla](./images/MIT.jpg)'
- } else if (data.license === Other) {
-    '';
+ } else if (data.license === 'GPL') {
+    return '![GPL](./images/gpl.jpg)'
+ } else if (data.license === 'Mozilla') {
+    return '![Mozilla](./images/mozilla.jpg)'
+ } else if (data.license === 'Other') {
+    ''
  }
 };
 
-// TODO: Create a function that returns the license link
-// If there is no license, return an empty string
-function renderLicenseLink(license) {}
+// Function that returns the license link. If there is no license, it returns an empty string.
+function renderLicenseLink(data) {
+   if (data.license === 'MIT') {
+      return '[MIT License Information](https://en.wikipedia.org/wiki/MIT_License)'
+   } else if (data.license === 'Apache') {
+      return '[Apache License Information](https://www.apache.org/licenses/LICENSE-2.0)'
+   } else if (data.license === 'GPL') {
+      return '[GPL License Information](https://www.gnu.org/licenses/gpl-3.0.en.html)'
+   } else if (data.license === 'Mozilla') {
+      return '[Mozilla License Information](https://www.mozilla.org/en-US/MPL/)'
+   } else if (data.license === 'Other') {
+      ''
+   }
+};
 
-// TODO: Create a function that returns the license section of README
-// If there is no license, return an empty string
-function renderLicenseSection(license) {}
+// Function that returns the license section of README. If there is no license, it returns an empty string.
+function renderLicenseSection(data) {
+   if (data.license === 'MIT' || data.license === 'Apache' || data.license === 'GPL' || data.license === 'Mozilla') {
+      return '## License'
+   } else if (data.license === 'Other') {
+      ''
+   }
+};
 
-// TODO: Create a function to generate markdown for README
+// Function that includes a link to the license section based on which.
+function renderLicenseTableofContents(data) {
+   if (data.license === 'MIT' || data.license === 'Apache' || data.license === 'GPL' || data.license === 'Mozilla') {
+      return '6. [License](#license)'
+   } else if (data.license === 'Other') {
+      ''
+   }
+  };
+
+// Function that generates markdown for the README.
 function generateMarkdown(data) {
   return `# ${data.title}
 
-${renderLicenseBadge(data.license)}
+${renderLicenseBadge(data)}
 
 ## Description
 ${data.description}
@@ -43,6 +67,8 @@ ${data.description}
 
 5. [Questions](#questions)  
 
+${renderLicenseTableofContents(data)}  
+
 ## Installation
 ${data.installation}
 
@@ -57,7 +83,11 @@ To test the application, run ${data.test}
 
 ## Questions
 If you have any questions, you can reach out to me at ${data.email} or find me on GitHub as ${data.github}.
-`;
+
+${renderLicenseSection(data)}
+${renderLicenseLink(data)}
+`
 }
 
+//Exports the function for use in the index.js
 export default generateMarkdown;
