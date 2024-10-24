@@ -1,13 +1,13 @@
 // Function that returns a license badge based on which license is passed. If there is no license, it returns an empty string.
 function renderLicenseBadge(data) {
  if (data.license === 'MIT') {
-    return '![MIT](./images/mit.jpg)'
+    return '![MIT](./assets/images/mit.jpg)'
  } else if (data.license === 'Apache') {
-    return '![Apache](./images/apache.jpg)'
+    return '![Apache](./assets/images/apache.jpg)'
  } else if (data.license === 'GPL') {
-    return '![GPL](./images/gpl.jpg)'
+    return '![GPL](./assets/images/gpl.jpg)'
  } else if (data.license === 'Mozilla') {
-    return '![Mozilla](./images/mozilla.jpg)'
+    return '![Mozilla](./assets/images/mozilla.jpg)'
  } else if (data.license === 'Other') {
     ''
  }
